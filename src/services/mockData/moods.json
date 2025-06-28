@@ -1,0 +1,68 @@
+[
+  {
+    "Id": 1,
+    "name": "Happy",
+    "description": "Bright, energetic videos with upbeat music and vibrant colors",
+    "icon": "Smile",
+    "color": "#FFD93D",
+    "music": ["happy-sunshine.mp3", "happy-upbeat.mp3", "happy-celebration.mp3"],
+    "musicCount": 3,
+    "transitions": ["fadeIn", "slideLeft", "zoomIn"],
+    "effects": ["colorPop", "brightness", "saturation"]
+  },
+  {
+    "Id": 2,
+    "name": "Romantic",
+    "description": "Soft, dreamy videos with gentle music and warm tones",
+    "icon": "Heart",
+    "color": "#FF6B9D",
+    "music": ["romantic-melody.mp3", "romantic-piano.mp3", "romantic-strings.mp3"],
+    "musicCount": 3,
+    "transitions": ["crossFade", "heartWipe", "softBlur"],
+    "effects": ["warmth", "softGlow", "vintage"]
+  },
+  {
+    "Id": 3,
+    "name": "Sad",
+    "description": "Emotional videos with melancholic music and cool tones",
+    "icon": "Cloud",
+    "color": "#6C8EBF",
+    "music": ["sad-piano.mp3", "sad-strings.mp3", "sad-ambient.mp3"],
+    "musicCount": 3,
+    "transitions": ["fadeOut", "slideDown", "dissolve"],
+    "effects": ["desaturate", "coolTones", "rainEffect"]
+  },
+  {
+    "Id": 4,
+    "name": "Calm",
+    "description": "Peaceful videos with ambient music and natural colors",
+    "icon": "Leaf",
+    "color": "#4ECDC4",
+    "music": ["calm-nature.mp3", "calm-ambient.mp3", "calm-meditation.mp3"],
+    "musicCount": 3,
+    "transitions": ["slowFade", "breathe", "gentle"],
+    "effects": ["naturalTones", "softFocus", "serenity"]
+  },
+  {
+    "Id": 5,
+    "name": "Adventure",
+    "description": "Dynamic videos with epic music and bold visuals",
+    "icon": "Mountain",
+    "color": "#FF8C42",
+    "music": ["adventure-epic.mp3", "adventure-rock.mp3", "adventure-cinematic.mp3"],
+    "musicCount": 3,
+    "transitions": ["quickCut", "slideUp", "zoomOut"],
+    "effects": ["contrast", "sharpness", "dramatic"]
+  },
+  {
+    "Id": 6,
+    "name": "Custom",
+    "description": "Create your own unique mood with custom settings",
+    "icon": "Palette",
+    "color": "#7B68EE",
+    "music": ["custom-1.mp3", "custom-2.mp3", "custom-3.mp3"],
+    "musicCount": 3,
+    "transitions": ["custom", "mixed", "creative"],
+    "effects": ["artistic", "unique", "personalized"]
+  }
+]

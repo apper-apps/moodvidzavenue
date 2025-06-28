@@ -1,0 +1,66 @@
+[
+  {
+    "Id": 1,
+    "mood": "Happy",
+    "moodId": 1,
+    "photos": [
+      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop"
+    ],
+    "duration": 15,
+    "music": "happy-sunshine.mp3",
+    "createdAt": "2024-01-15T10:30:00Z"
+  },
+  {
+    "Id": 2,
+    "mood": "Romantic",
+    "moodId": 2,
+    "photos": [
+      "https://images.unsplash.com/photo-1518621012382-a90397656476?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop"
+    ],
+    "duration": 12,
+    "music": "romantic-melody.mp3",
+    "createdAt": "2024-01-14T16:45:00Z"
+  },
+  {
+    "Id": 3,
+    "mood": "Adventure",
+    "moodId": 5,
+    "photos": [
+      "https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1464822759844-d150f9b9322f?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop"
+    ],
+    "duration": 20,
+    "music": "adventure-epic.mp3",
+    "createdAt": "2024-01-13T08:20:00Z"
+  },
+  {
+    "Id": 4,
+    "mood": "Calm",
+    "moodId": 4,
+    "photos": [
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop"
+    ],
+    "duration": 10,
+    "music": "calm-nature.mp3",
+    "createdAt": "2024-01-12T14:15:00Z"
+  },
+  {
+    "Id": 5,
+    "mood": "Happy",
+    "moodId": 1,
+    "photos": [
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1501436513145-30f24e19fcc4?w=400&h=300&fit=crop",
+      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=300&fit=crop"
+    ],
+    "duration": 18,
+    "music": "happy-upbeat.mp3",
+    "createdAt": "2024-01-11T11:00:00Z"
+  }
+]
