@@ -8,16 +8,23 @@ import MoodSelectionPage from '@/components/pages/MoodSelectionPage';
 import VideoPreviewPage from '@/components/pages/VideoPreviewPage';
 import LibraryPage from '@/components/pages/LibraryPage';
 import SettingsPage from '@/components/pages/SettingsPage';
+// NOTE: Authentication pages need to be created separately
+// import LoginPage from '@/components/pages/LoginPage';
+// import RegisterPage from '@/components/pages/RegisterPage';
 import { LanguageProvider } from '@/hooks/useLanguage';
 import { VideoProvider } from '@/hooks/useVideo';
-
 function App() {
   return (
     <LanguageProvider>
       <VideoProvider>
         <Router>
           <div className="min-h-screen bg-background">
-            <Routes>
+<Routes>
+              {/* Authentication routes - outside Layout */}
+              {/* <Route path="/login" element={<LoginPage />} /> */}
+              {/* <Route path="/register" element={<RegisterPage />} /> */}
+              
+              {/* Main app routes - inside Layout */}
               <Route path="/" element={<Layout />}>
                 <Route index element={<HomePage />} />
                 <Route path="create" element={<CreatePage />} />

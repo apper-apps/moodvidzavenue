@@ -6,7 +6,7 @@ import { useLanguage } from '@/hooks/useLanguage';
 const BottomNavigation = () => {
   const { t } = useLanguage();
 
-  const navItems = [
+const navItems = [
     { to: '/', icon: 'Home', label: t('home') },
     { to: '/create', icon: 'Plus', label: t('create') },
     { to: '/library', icon: 'Library', label: t('library') },
