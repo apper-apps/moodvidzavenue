@@ -9,6 +9,8 @@ import VideoPreviewPage from '@/components/pages/VideoPreviewPage';
 import LibraryPage from '@/components/pages/LibraryPage';
 import SettingsPage from '@/components/pages/SettingsPage';
 import VipPage from '@/components/pages/VipPage';
+import AdminDashboard from '@/components/pages/AdminDashboard';
+import AdminUsers from '@/components/pages/AdminUsers';
 // NOTE: Authentication pages need to be created separately
 // import LoginPage from '@/components/pages/LoginPage';
 // import RegisterPage from '@/components/pages/RegisterPage';
@@ -29,12 +31,16 @@ function App() {
               <Route path="/" element={<Layout />}>
                 <Route index element={<HomePage />} />
                 <Route path="create" element={<CreatePage />} />
-                <Route path="upload" element={<PhotoUploadPage />} />
-<Route path="mood" element={<MoodSelectionPage />} />
+<Route path="upload" element={<PhotoUploadPage />} />
+                <Route path="mood" element={<MoodSelectionPage />} />
                 <Route path="preview" element={<VideoPreviewPage />} />
                 <Route path="library" element={<LibraryPage />} />
                 <Route path="settings" element={<SettingsPage />} />
                 <Route path="vip" element={<VipPage />} />
+                
+                {/* Admin routes */}
+                <Route path="admin" element={<AdminDashboard />} />
+                <Route path="admin/users" element={<AdminUsers />} />
               </Route>
             </Routes>
             <ToastContainer
