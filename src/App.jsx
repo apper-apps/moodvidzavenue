@@ -8,6 +8,7 @@ import MoodSelectionPage from '@/components/pages/MoodSelectionPage';
 import VideoPreviewPage from '@/components/pages/VideoPreviewPage';
 import LibraryPage from '@/components/pages/LibraryPage';
 import SettingsPage from '@/components/pages/SettingsPage';
+import VipPage from '@/components/pages/VipPage';
 // NOTE: Authentication pages need to be created separately
 // import LoginPage from '@/components/pages/LoginPage';
 // import RegisterPage from '@/components/pages/RegisterPage';
@@ -29,10 +30,11 @@ function App() {
                 <Route index element={<HomePage />} />
                 <Route path="create" element={<CreatePage />} />
                 <Route path="upload" element={<PhotoUploadPage />} />
-                <Route path="mood" element={<MoodSelectionPage />} />
+<Route path="mood" element={<MoodSelectionPage />} />
                 <Route path="preview" element={<VideoPreviewPage />} />
                 <Route path="library" element={<LibraryPage />} />
                 <Route path="settings" element={<SettingsPage />} />
+                <Route path="vip" element={<VipPage />} />
               </Route>
             </Routes>
             <ToastContainer

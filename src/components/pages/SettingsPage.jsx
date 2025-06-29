@@ -7,10 +7,11 @@ import ToggleSwitch from '@/components/atoms/ToggleSwitch';
 import LanguageSelector from '@/components/molecules/LanguageSelector';
 import { useLanguage } from '@/hooks/useLanguage';
 import authService from '@/services/api/authService';
-
+import vipService from '@/services/api/vipService';
 const SettingsPage = () => {
   const { t } = useLanguage();
   const [user, setUser] = useState(null);
+  const [vipStatus, setVipStatus] = useState(null);
   const [settings, setSettings] = useState({
     notifications: true,
     autoSave: true,
@@ -21,8 +22,20 @@ const SettingsPage = () => {
   useEffect(() => {
     const currentUser = authService.getCurrentUser();
     setUser(currentUser);
+    
+    if (currentUser) {
+      loadVipStatus();
+    }
   }, []);
 
+  const loadVipStatus = async () => {
+    try {
+      const status = await vipService.getVipStatus();
+      setVipStatus(status);
+    } catch (error) {
+      console.error('Error loading VIP status:', error);
+    }
+  };
   const handleLogout = async () => {
     try {
       await authService.logout();
@@ -254,7 +267,68 @@ const SettingsPage = () => {
           </div>
         </div>
         <LanguageSelector />
-      </motion.div>
+</motion.div>
+
+      {/* VIP Status Section */}
+      {user && (
+        <motion.div
+          className="card-premium p-6 space-y-4"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.25 }}
+        >
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center">
+              <ApperIcon name="Crown" size={20} className="text-white" />
+            </div>
+            <div>
+              <h3 className="text-lg font-display font-semibold text-gray-800">
+                VIP Membership
+              </h3>
+              <p className="text-sm text-gray-600">
+                {vipStatus?.tier === 'Free' ? 'Upgrade for premium features' : `${vipStatus?.tier} Member`}
+              </p>
+            </div>
+          </div>
+          
+          <div className="space-y-4">
+            <div className="flex items-center justify-between p-4 bg-gray-50/50 rounded-xl">
+              <div className="flex items-center space-x-4">
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
+                  vipStatus?.tier === 'Free' 
+                    ? 'bg-gray-100' 
+                    : 'bg-gradient-to-r from-yellow-400 to-orange-500'
+                }`}>
+                  <ApperIcon 
+                    name={vipStatus?.tier === 'Free' ? 'User' : 'Crown'} 
+                    size={20} 
+                    className={vipStatus?.tier === 'Free' ? 'text-gray-600' : 'text-white'} 
+                  />
+                </div>
+                <div>
+                  <p className="font-medium text-gray-800">
+                    {vipStatus?.tier || 'Free'} Plan
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    {vipStatus?.tier === 'Free' 
+                      ? 'Basic features only' 
+                      : `Expires ${new Date(vipStatus?.expiresAt).toLocaleDateString()}`
+                    }
+                  </p>
+                </div>
+              </div>
+              <Button
+                onClick={() => window.location.href = '/vip'}
+                className={vipStatus?.tier === 'Free' ? 'bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600' : ''}
+                variant={vipStatus?.tier === 'Free' ? 'primary' : 'ghost'}
+              >
+                {vipStatus?.tier === 'Free' ? 'Upgrade' : 'Manage'}
+              </Button>
+            </div>
+          </div>
+        </motion.div>
+      )}
+
       {/* Settings Sections */}
       {settingSections.map((section, sectionIndex) => (
         <motion.div
