@@ -21,11 +21,11 @@ class VideoService {
     return { ...video };
   }
 
-  async create(videoData) {
+async create(videoData) {
     // Simulate API delay
     await new Promise(resolve => setTimeout(resolve, 400));
     
-    const newId = Math.max(...this.data.map(item => item.Id), 0) + 1;
+    const newId = this.data.length > 0 ? Math.max(...this.data.map(item => item.Id)) + 1 : 1;
     const newVideo = {
       Id: newId,
       ...videoData,

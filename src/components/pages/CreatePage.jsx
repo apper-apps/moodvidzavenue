@@ -49,10 +49,10 @@ const CreatePage = () => {
         className="text-center space-y-4"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+transition={{ duration: 0.6 }}
       >
         <h1 className="text-3xl sm:text-4xl font-display font-bold gradient-text">
-          {t('createMoodVideo')}
+          Create Your Moodify Video
         </h1>
         <p className="text-gray-600 text-lg max-w-2xl mx-auto">
           {t('createVideoSubtitle')}
