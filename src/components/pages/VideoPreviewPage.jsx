@@ -27,21 +27,32 @@ const VideoPreviewPage = () => {
     generateVideo();
   }, [photos, selectedMood, navigate]);
 
-  const generateVideo = async () => {
+const generateVideo = async () => {
     try {
       setGenerating(true);
       
-      // Simulate video generation
-      await new Promise(resolve => setTimeout(resolve, 3000));
-      
-      const newVideo = await videoService.create({
-        photos: photos.map(p => p.url),
+      // Enhanced video generation with API integration
+      const videoData = {
+        photos: photos.map(p => ({
+          url: p.url,
+          originalUrl: p.originalUrl,
+          backgroundRemoved: p.backgroundRemoved,
+          processingMetadata: p.apiMetadata
+        })),
         moodId: selectedMood.Id,
         mood: selectedMood.name,
         duration: Math.min(photos.length * 3, 30), // 3 seconds per photo, max 30s
         music: selectedMood.music?.[0] || 'default-music.mp3',
         createdAt: new Date().toISOString(),
-      });
+        apiIntegration: {
+          shotstackEnabled: true,
+          elevenLabsEnabled: false,
+          assemblyAiEnabled: false,
+          removeBgEnabled: photos.some(p => p.backgroundRemoved)
+        }
+      };
+
+      const newVideo = await videoService.create(videoData);
 
       setGeneratedVideo(newVideo);
       toast.success(t('videoGenerated'));

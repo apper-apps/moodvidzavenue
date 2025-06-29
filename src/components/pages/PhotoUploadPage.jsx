@@ -15,7 +15,7 @@ const PhotoUploadPage = () => {
   const { photos, setPhotos } = useVideo();
   const [uploading, setUploading] = useState(false);
 
-  const handleFilesSelect = useCallback(async (files) => {
+const handleFilesSelect = useCallback(async (files) => {
     if (files.length === 0) return;
 
     if (photos.length + files.length > 10) {
@@ -46,13 +46,28 @@ const PhotoUploadPage = () => {
         // Create preview URL
         const url = URL.createObjectURL(file);
         
-        newPhotos.push({
+        // Prepare photo object with API integration placeholders
+        const photoData = {
           Id: Date.now() + i,
           file,
           url,
           name: file.name,
           size: file.size,
-        });
+          originalUrl: url,
+          processedUrl: null,
+          backgroundRemoved: false,
+          processing: false,
+          apiMetadata: {
+            removeBg: {
+              processed: false,
+              originalSize: file.size,
+              processedSize: null,
+              processingTime: null
+            }
+          }
+        };
+
+        newPhotos.push(photoData);
       }
 
       setPhotos([...photos, ...newPhotos]);
