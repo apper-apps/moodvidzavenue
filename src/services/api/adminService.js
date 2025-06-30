@@ -1,4 +1,4 @@
-import vipService from './vipService';
+import vipService from "@/services/api/vipService";
 
 class AdminService {
   constructor() {
@@ -59,9 +59,34 @@ class AdminService {
         createdAt: new Date('2024-01-18').toISOString(),
         lastLogin: new Date('2024-01-21').toISOString()
       }
-    ];
+];
 
     this.nextUserId = 6;
+    // Mock API keys data with encryption simulation
+    this.apiKeys = [
+      {
+        Id: 1,
+        name: 'OpenAI API',
+        service: 'openai',
+        key: 'sk-1234567890abcdef1234567890abcdef', // In production, this would be encrypted
+        description: 'Used for AI-powered content generation',
+        status: 'active',
+        createdAt: new Date('2024-01-10').toISOString(),
+        updatedAt: new Date('2024-01-15').toISOString()
+      },
+      {
+        Id: 2,
+        name: 'ElevenLabs TTS',
+        service: 'elevenlabs',
+        key: 'el_1234567890abcdef1234567890abcdef',
+        description: 'Text-to-speech voice generation',
+        status: 'active',
+        createdAt: new Date('2024-01-12').toISOString(),
+        updatedAt: new Date('2024-01-12').toISOString()
+      }
+    ];
+
+    this.nextApiKeyId = 3;
   }
 
   delay(ms = 300) {
@@ -340,9 +365,198 @@ class AdminService {
       activeConnections: 245,
       memoryUsage: '68%',
       cpuUsage: '34%',
-      diskUsage: '45%',
+diskUsage: '45%',
       lastChecked: new Date().toISOString()
     };
+  }
+  // API Key Management Methods
+
+  // Get all API keys
+  async getApiKeys() {
+    await this.delay();
+    return [...this.apiKeys];
+  }
+
+  // Get API key by ID
+  async getApiKeyById(id) {
+    await this.delay();
+    const apiKey = this.apiKeys.find(k => k.Id === parseInt(id));
+    if (!apiKey) {
+      throw new Error('API key not found');
+    }
+    return { ...apiKey };
+  }
+
+  // Create new API key
+  async createApiKey(keyData) {
+    await this.delay();
+    
+    // Validate required fields
+    if (!keyData.name || !keyData.service || !keyData.key) {
+      throw new Error('Name, service, and key are required');
+    }
+
+    // Check for duplicate service
+    const existingKey = this.apiKeys.find(k => 
+      k.service === keyData.service && k.name === keyData.name
+    );
+    if (existingKey) {
+      throw new Error('API key with this name and service already exists');
+    }
+
+    // Validate API key format (basic validation)
+    if (!this.validateApiKeyFormat(keyData.service, keyData.key)) {
+      throw new Error('Invalid API key format for selected service');
+    }
+
+    const newApiKey = {
+      Id: this.nextApiKeyId++,
+      name: keyData.name.trim(),
+      service: keyData.service,
+      key: keyData.key.trim(), // In production, encrypt this
+      description: keyData.description?.trim() || '',
+      status: 'active',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+
+    this.apiKeys.push(newApiKey);
+    return { ...newApiKey };
+  }
+
+  // Update API key
+  async updateApiKey(id, keyData) {
+    await this.delay();
+    
+    const keyIndex = this.apiKeys.findIndex(k => k.Id === parseInt(id));
+    if (keyIndex === -1) {
+      throw new Error('API key not found');
+    }
+
+    // Validate required fields
+    if (!keyData.name || !keyData.service || !keyData.key) {
+      throw new Error('Name, service, and key are required');
+    }
+
+    // Check for duplicate service (excluding current key)
+    const existingKey = this.apiKeys.find(k => 
+      k.Id !== parseInt(id) && k.service === keyData.service && k.name === keyData.name
+    );
+    if (existingKey) {
+      throw new Error('API key with this name and service already exists');
+    }
+
+    // Validate API key format
+    if (!this.validateApiKeyFormat(keyData.service, keyData.key)) {
+      throw new Error('Invalid API key format for selected service');
+    }
+
+    const updatedApiKey = {
+      ...this.apiKeys[keyIndex],
+      name: keyData.name.trim(),
+      service: keyData.service,
+      key: keyData.key.trim(), // In production, encrypt this
+      description: keyData.description?.trim() || '',
+      updatedAt: new Date().toISOString()
+    };
+
+    this.apiKeys[keyIndex] = updatedApiKey;
+    return { ...updatedApiKey };
+  }
+
+  // Delete API key
+  async deleteApiKey(id) {
+    await this.delay();
+    
+    const keyIndex = this.apiKeys.findIndex(k => k.Id === parseInt(id));
+    if (keyIndex === -1) {
+      throw new Error('API key not found');
+    }
+
+    this.apiKeys.splice(keyIndex, 1);
+    return { success: true };
+  }
+
+  // Validate API key format based on service
+  validateApiKeyFormat(service, key) {
+    const patterns = {
+      openai: /^sk-[a-zA-Z0-9]{32,}$/,
+      elevenlabs: /^[a-f0-9]{32}$|^el_[a-zA-Z0-9]{32,}$/,
+      assemblyai: /^[a-f0-9]{32}$/,
+      removebg: /^[a-zA-Z0-9]{32,}$/,
+      shotstack: /^[a-zA-Z0-9-]{32,}$/,
+      stripe: /^(sk_test_|sk_live_|pk_test_|pk_live_)[a-zA-Z0-9]{24,}$/
+    };
+
+    const pattern = patterns[service];
+    return pattern ? pattern.test(key) : key.length >= 20; // Fallback validation
+  }
+
+  // Get API key for specific service (for application use)
+  async getApiKeyForService(service) {
+    await this.delay();
+    const apiKey = this.apiKeys.find(k => k.service === service && k.status === 'active');
+    if (!apiKey) {
+      throw new Error(`No active API key found for service: ${service}`);
+    }
+    return apiKey.key; // In production, decrypt before returning
+  }
+
+  // Test API key connectivity
+  async testApiKey(id) {
+    await this.delay(1000); // Simulate API call
+    
+    const apiKey = this.apiKeys.find(k => k.Id === parseInt(id));
+    if (!apiKey) {
+      throw new Error('API key not found');
+    }
+
+    // Simulate testing the API key
+    const isValid = Math.random() > 0.2; // 80% success rate for demo
+    
+    if (isValid) {
+      return { 
+        valid: true, 
+        message: 'API key is valid and working',
+        lastTested: new Date().toISOString()
+      };
+    } else {
+      return { 
+        valid: false, 
+        message: 'API key authentication failed',
+        lastTested: new Date().toISOString()
+      };
+    }
+  }
+
+  // Deactivate API key
+  async deactivateApiKey(id) {
+    await this.delay();
+    
+    const keyIndex = this.apiKeys.findIndex(k => k.Id === parseInt(id));
+    if (keyIndex === -1) {
+      throw new Error('API key not found');
+    }
+
+    this.apiKeys[keyIndex].status = 'inactive';
+    this.apiKeys[keyIndex].updatedAt = new Date().toISOString();
+
+    return { ...this.apiKeys[keyIndex] };
+  }
+
+  // Activate API key
+  async activateApiKey(id) {
+    await this.delay();
+    
+    const keyIndex = this.apiKeys.findIndex(k => k.Id === parseInt(id));
+    if (keyIndex === -1) {
+      throw new Error('API key not found');
+    }
+
+    this.apiKeys[keyIndex].status = 'active';
+    this.apiKeys[keyIndex].updatedAt = new Date().toISOString();
+
+    return { ...this.apiKeys[keyIndex] };
   }
 }
 
