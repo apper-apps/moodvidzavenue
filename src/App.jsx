@@ -11,9 +11,9 @@ import SettingsPage from '@/components/pages/SettingsPage';
 import VipPage from '@/components/pages/VipPage';
 import AdminDashboard from '@/components/pages/AdminDashboard';
 import AdminUsers from '@/components/pages/AdminUsers';
-// NOTE: Authentication pages need to be created separately
-// import LoginPage from '@/components/pages/LoginPage';
-// import RegisterPage from '@/components/pages/RegisterPage';
+import LoginPage from '@/components/pages/LoginPage';
+import RegisterPage from '@/components/pages/RegisterPage';
+import DashboardPage from '@/components/pages/DashboardPage';
 import { LanguageProvider } from '@/hooks/useLanguage';
 import { VideoProvider } from '@/hooks/useVideo';
 function App() {
@@ -24,17 +24,18 @@ function App() {
           <div className="min-h-screen bg-background">
 <Routes>
               {/* Authentication routes - outside Layout */}
-              {/* <Route path="/login" element={<LoginPage />} /> */}
-              {/* <Route path="/register" element={<RegisterPage />} /> */}
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
               
               {/* Main app routes - inside Layout */}
               <Route path="/" element={<Layout />}>
                 <Route index element={<HomePage />} />
                 <Route path="create" element={<CreatePage />} />
-<Route path="upload" element={<PhotoUploadPage />} />
+                <Route path="upload" element={<PhotoUploadPage />} />
                 <Route path="mood" element={<MoodSelectionPage />} />
                 <Route path="preview" element={<VideoPreviewPage />} />
                 <Route path="library" element={<LibraryPage />} />
+                <Route path="dashboard" element={<DashboardPage />} />
                 <Route path="settings" element={<SettingsPage />} />
                 <Route path="vip" element={<VipPage />} />
                 

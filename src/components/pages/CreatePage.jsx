@@ -51,8 +51,8 @@ const CreatePage = () => {
         animate={{ opacity: 1, y: 0 }}
 transition={{ duration: 0.6 }}
       >
-        <h1 className="text-3xl sm:text-4xl font-display font-bold gradient-text">
-          Create Your Moodify Video
+<h1 className="text-3xl sm:text-4xl font-display font-bold gradient-text">
+          Create Your Moodvidz Video
         </h1>
         <p className="text-gray-600 text-lg max-w-2xl mx-auto">
           {t('createVideoSubtitle')}
