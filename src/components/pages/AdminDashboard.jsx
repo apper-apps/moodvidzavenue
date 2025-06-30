@@ -445,11 +445,10 @@ useEffect(() => {
                   className="bg-blue-600 h-2 rounded-full transition-all duration-300"
                   style={{ width: `${tier.percentage}%` }}
                 />
-              </div>
+</div>
               <p className="text-xs text-gray-500 mt-1">{tier.percentage}%</p>
             </div>
           )) || (
-)) || (
             <p className="text-gray-500 text-sm col-span-3">No subscription data available</p>
           )}
         </div>
@@ -565,9 +564,10 @@ useEffect(() => {
           onCancel={() => {
             setShowCreateForm(false);
             setEditingApiKey(null);
-          }}
+}}
         />
       )}
+    </div>
   );
 };
 
