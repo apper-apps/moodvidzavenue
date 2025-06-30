@@ -117,13 +117,20 @@
     "tags": ["motivation", "growth", "inspiring", "success"],
     "music": "motivational-orchestral.mp3",
     "resolution": "1920x1080",
-    "status": "completed"
-  }
-]
+"status": "completed"
+  },
   {
-    "Id": 1,
+    "Id": 7,
+    "title": "Happy Moments",
+    "description": "Joyful photo compilation with upbeat music",
+    "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    "thumbnail": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=300&fit=crop",
     "mood": "Happy",
     "moodId": 1,
+    "userId": 1,
+    "views": 95,
+    "shares": 7,
+    "likes": 21,
     "photos": [
       "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=300&fit=crop",
       "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
@@ -131,24 +138,48 @@
     ],
     "duration": 15,
     "music": "happy-sunshine.mp3",
-    "createdAt": "2024-01-15T10:30:00Z"
+    "createdAt": "2024-01-15T10:30:00Z",
+    "fileSize": 13107200,
+    "tags": ["happy", "joy", "celebration", "upbeat"],
+    "resolution": "1920x1080",
+    "status": "completed"
   },
   {
-    "Id": 2,
+    "Id": 8,
+    "title": "Romantic Evening",
+    "description": "Romantic photo montage with gentle melodies",
+    "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    "thumbnail": "https://images.unsplash.com/photo-1518621012382-a90397656476?w=400&h=300&fit=crop",
     "mood": "Romantic",
     "moodId": 2,
+    "userId": 1,
+    "views": 78,
+    "shares": 11,
+    "likes": 26,
     "photos": [
       "https://images.unsplash.com/photo-1518621012382-a90397656476?w=400&h=300&fit=crop",
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop"
     ],
     "duration": 12,
     "music": "romantic-melody.mp3",
-    "createdAt": "2024-01-14T16:45:00Z"
+    "createdAt": "2024-01-14T16:45:00Z",
+    "fileSize": 10485760,
+    "tags": ["romantic", "love", "gentle", "dreamy"],
+    "resolution": "1920x1080",
+    "status": "completed"
   },
   {
-    "Id": 3,
+    "Id": 9,
+    "title": "Adventure Compilation",
+    "description": "Epic adventure moments with dynamic music",
+    "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    "thumbnail": "https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&h=300&fit=crop",
     "mood": "Adventure",
     "moodId": 5,
+    "userId": 1,
+    "views": 134,
+    "shares": 18,
+    "likes": 45,
     "photos": [
       "https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&h=300&fit=crop",
       "https://images.unsplash.com/photo-1464822759844-d150f9b9322f?w=400&h=300&fit=crop",
@@ -157,24 +188,48 @@
     ],
     "duration": 20,
     "music": "adventure-epic.mp3",
-    "createdAt": "2024-01-13T08:20:00Z"
+    "createdAt": "2024-01-13T08:20:00Z",
+    "fileSize": 17825792,
+    "tags": ["adventure", "epic", "dynamic", "exploration"],
+    "resolution": "1920x1080",
+    "status": "completed"
   },
   {
-    "Id": 4,
+    "Id": 10,
+    "title": "Calm Reflections",
+    "description": "Peaceful photo sequence with calming sounds",
+    "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    "thumbnail": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
     "mood": "Calm",
     "moodId": 4,
+    "userId": 1,
+    "views": 67,
+    "shares": 4,
+    "likes": 15,
     "photos": [
       "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop",
       "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop"
     ],
     "duration": 10,
     "music": "calm-nature.mp3",
-    "createdAt": "2024-01-12T14:15:00Z"
+    "createdAt": "2024-01-12T14:15:00Z",
+    "fileSize": 8388608,
+    "tags": ["calm", "peaceful", "nature", "serene"],
+    "resolution": "1920x1080",
+    "status": "completed"
   },
   {
-    "Id": 5,
+    "Id": 11,
+    "title": "Joyful Memories",
+    "description": "Happy photo collection with cheerful music",
+    "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    "thumbnail": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=300&fit=crop",
     "mood": "Happy",
     "moodId": 1,
+    "userId": 1,
+    "views": 102,
+    "shares": 9,
+    "likes": 28,
     "photos": [
       "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=300&fit=crop",
       "https://images.unsplash.com/photo-1501436513145-30f24e19fcc4?w=400&h=300&fit=crop",
@@ -182,6 +237,10 @@
     ],
     "duration": 18,
     "music": "happy-upbeat.mp3",
-    "createdAt": "2024-01-11T11:00:00Z"
+    "createdAt": "2024-01-11T11:00:00Z",
+    "fileSize": 15728640,
+    "tags": ["happy", "joyful", "memories", "upbeat"],
+    "resolution": "1920x1080",
+    "status": "completed"
   }
 ]
